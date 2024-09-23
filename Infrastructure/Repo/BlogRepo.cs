@@ -25,9 +25,14 @@ namespace Infrastructure.Repo
             throw new NotImplementedException();
         }
 
-        public Task<List<Blog>> getBlogsAsync()
+        public async Task<List<Blog>> getBlogsAsync()
         {
-            throw new NotImplementedException();
+            return await Task.FromResult(new List<Blog>()
+            {
+                new Blog() {Author="sdhsk",Description="sdhsk",Id=1,Name="sdskjd" },
+                new Blog() {Author="sdhsk",Description="sdsdjh",Id=2,Name="sdskjd"}
+            }
+            );
         }
 
         public void updateBlog(Blog blog)
