@@ -12,8 +12,8 @@ namespace Core.IRepo
         Task<List<Blog>> getBlogsAsync();
         Task<Blog> getBlogByIdAsync(int id);
         Task addBlogAsync(Blog blog);
-        void updateBlog(Blog blog);
-        void deleteBlog(int id);
+        Task<bool> updateBlog(Blog blog);
+        Task<bool> deleteBlog(int id);
 
     }
 }

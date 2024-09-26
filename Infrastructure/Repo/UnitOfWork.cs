@@ -1,4 +1,5 @@
 ﻿using Core.IRepo;
+using Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,18 @@ namespace Infrastructure.Repo
 {
     public class UnitOfWork : IUnitOFWork
     {
-        public IBlogRepo _blogRepo => new BlogRepo();
+        private readonly AppDbContext _appDbContext;
 
-        public Task<bool> saveChangesAsync()
+        public UnitOfWork(AppDbContext appDbContext)
         {
-            throw new NotImplementedException();
+            _appDbContext = appDbContext;
+        }
+
+        public IBlogRepo _blogRepo => new BlogRepo(_appDbContext);
+
+        public async Task<bool> saveChangesAsync()
+        {
+           return await _appDbContext.SaveChangesAsync()>0;
         }
     }
 }

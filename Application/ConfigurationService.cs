@@ -20,6 +20,8 @@ namespace Application
                 ctg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
 
+
+
             return services;
         }
 
